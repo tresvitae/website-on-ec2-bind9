@@ -67,3 +67,32 @@ logging {
 };
 EOF
 ```
+
+5. Create a directory for storing logs and set necessary privileges
+`mkdir /var/log/named`
+`chown bind:root /var/log/named`
+`chmod 775 /var/log/named/`
+
+6. Restart the service
+`service bind9 restart`
+
+7. Setup log rotation
+```sh
+tee /etc/logrotate.d/bind << EOF
+/var/log/named/bind.log
+{
+    rotate 90
+    daily
+    dateext
+    dateformat _%Y-%m-%d
+    missingok
+    create 644 bind bind
+    delaycompress
+    compress
+    notifempty
+    postrotate
+        /bin/systemctl reload bind9
+    endscript
+}
+EOF
+```
