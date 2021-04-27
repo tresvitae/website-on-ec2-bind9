@@ -106,3 +106,36 @@ zone "machinedie.ml" {
 };
 EOF
 ```
+
+9. Create the zone files
+`mkdir /etc/bind/zones`
+
+### Set Elastic IP variable with your static ip:
+`ELASTIC_IP=<static_ip>`
+
+### Change domain name to registered on Freenom.com
+```sh
+tee /etc/bind/zones/db.machine.die << EOF
+\$TTL 900
+@       IN      SOA     ns1.machinedie.ml. admin.machinedie.ml. (
+                                1       ;<serial-number>
+                              900       ;<time-to-refresh>
+                              900       ;<time-to-retry>
+                           604800       ;<time-to-expire>
+                              900)      ;<minimum-TTL>
+;List Nameservers
+        IN      NS      ns1.machinedie.ml.
+        IN      NS      ns2.machinedie.ml.
+;Create A record
+        IN      A       $ELASTIC_IP
+;address to name mapping
+ns1     IN      A       $ELASTIC_IP
+ns2     IN      A       $ELASTIC_IP
+www     IN      A       $ELASTIC_IP
+;wildcard DNS entry
+*       IN      A       $ELASTIC_IP
+EOF
+```
+
+10. Restart the service
+`systemctl restart bind9`
