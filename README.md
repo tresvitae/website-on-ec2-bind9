@@ -45,3 +45,25 @@ The DNS configuration files are stored in the /etc/bind directory. The primary c
 
 3. If not, enable the new configuration service
 `systemctl enable bind9`
+
+4. Store all the logs to /var/log/named/bind.log
+`echo 'include "/etc/bind/named.conf.log";' | tee -a /etc/bind/named.conf`
+```sh
+tee /etc/bind/named.conf.log << EOF
+logging {
+ channel bind_log {
+   file "/var/log/named/bind.log" versions 3 size 5m;
+   severity info;
+   print-category yes;
+   print-severity yes;
+   print-time yes;
+ };
+ category default { bind_log; };
+ category update { bind_log; };
+ category update-security { bind_log; };
+ category security { bind_log; };
+ category queries { bind_log; };
+ category lame-servers { null; };
+};
+EOF
+```
