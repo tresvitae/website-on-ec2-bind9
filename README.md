@@ -139,3 +139,18 @@ EOF
 
 10. Restart the service
 `systemctl restart bind9`
+
+## Setup simple website
+1. `apt install nginx`
+2. If not, enable and start the service
+`systemctl enable nginx`
+`systemctl restart nginx`
+3. Ouput message on web
+`rm /var/www/html/index.nginx-debian.html`
+```sh
+tee /var/www/html/index.html << EOF
+<html>
+Machines never die!
+</html>
+EOF
+```
