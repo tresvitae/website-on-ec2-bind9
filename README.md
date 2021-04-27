@@ -7,12 +7,12 @@
 
 
 ## Lauch EC2 
-1. Create EC2 [instruction](https://medium.com/@GalarnykMichael/aws-ec2-part-1-creating-ec2-instance-9d7f8368f78a)
+1. Create EC2 [see instruction](https://medium.com/@GalarnykMichael/aws-ec2-part-1-creating-ec2-instance-9d7f8368f78a)
 2. Set Security Group with open to world port HTTP, and DNS (TCP and UDP) 
 
 ### Setup EC2 with Elastic IP
 1. Create Elastic IP address
-2. Associate it with EC2 instance [instructions](https://medium.com/@pablo_ezequiel/setting-an-elastic-ip-on-aws-ec2-739341a1cc65)
+2. Associate it with EC2 instance [see instruction](https://medium.com/@pablo_ezequiel/setting-an-elastic-ip-on-aws-ec2-739341a1cc65)
 
 ## Setup free domain Name
 1. Find available domain on [Freenom.com](https://www.freenom.com/en/index.html?lang=en) and register
@@ -140,7 +140,7 @@ EOF
 10. Restart the service
 `systemctl restart bind9`
 
-## Setup simple website
+## Setup simple website using NGINX
 1. `apt install nginx`
 2. If not, enable and start the service
 `systemctl enable nginx`
@@ -154,3 +154,12 @@ Machines never die!
 </html>
 EOF
 ```
+
+
+
+Sources:
+https://help.ubuntu.com/community/BIND9ServerHowto
+https://ubuntu.com/server/docs/service-domain-name-service-dns
+https://www.server-world.info/en/note?os=Ubuntu_18.04&p=dns&f=1
+https://www.digitalocean.com/community/tutorial_series/an-introduction-to-managing-dns
+http://kti.eti.pg.gda.pl/ktilab/DNS/DNS.pdf
