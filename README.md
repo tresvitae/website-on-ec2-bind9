@@ -28,3 +28,20 @@ Example:
 
 5. Save it
 The domain registration is instant but the propagation of the domain’s DNS takes up to 72 hours.
+
+## Install and configure BIND9 DNS server on Ubuntu
+1. `apt-get update`
+2. `apt install bind9 bind9-doc dnsutils`
+
+BIND stands for Berkley Internet Naming Daemon. Domain Name Service is an Internet service that maps IP addresses and fully qualified domain names (FQDN) to one another. In this way, DNS alleviates the need to remember IP addresses. Computers that run DNS are called name servers.
+
+dnsutils is useful package for testing and troubleshooting DNS issues.
+
+The DNS configuration files are stored in the /etc/bind directory. The primary configuration file is /etc/bind/named.conf, which in the layout provided by the package just includes these files.
+
+/etc/bind/named.conf.options: global DNS options
+/etc/bind/named.conf.local: for your zones
+/etc/bind/named.conf.default-zones: default zones such as localhost, its reverse, and the root hints
+
+3. If not, enable the new configuration service
+`systemctl enable bind9`
