@@ -74,7 +74,7 @@ EOF
 `chmod 775 /var/log/named/`
 
 6. Restart the service
-`service bind9 restart`
+`systemctl restart bind9`
 
 7. Setup log rotation
 ```sh
@@ -94,5 +94,15 @@ tee /etc/logrotate.d/bind << EOF
         /bin/systemctl reload bind9
     endscript
 }
+EOF
+```
+
+8. Replace zone name (machinedie.ml) to your domain name from Freenom.com 
+```sh
+\tee /etc/bind/named.conf.local << EOF
+zone "machinedie.ml" {
+        type master;
+        file "/etc/bind/zones/db.machinedie.ml";
+};
 EOF
 ```
