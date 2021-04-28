@@ -154,9 +154,15 @@ Machines never die!
 </html>
 EOF
 ```
-
-
-Sources:
+  
+## Test environment  
+1. `named-checkconf /etc/bind/named.conf`
+2. `named-checkzone machinedie.ml /etc/bind/zones/db.machinedie.ml`
+3. `dig machinedie.ml`
+  
+  
+      
+Sources:  
 https://help.ubuntu.com/community/BIND9ServerHowto  
 https://ubuntu.com/server/docs/service-domain-name-service-dns  
 https://www.server-world.info/en/note?os=Ubuntu_18.04&p=dns&f=1  
