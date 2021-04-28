@@ -155,3 +155,10 @@ Machines never die!
 EOF
 ```
 
+
+Sources:
+https://help.ubuntu.com/community/BIND9ServerHowto
+https://ubuntu.com/server/docs/service-domain-name-service-dns
+https://www.server-world.info/en/note?os=Ubuntu_18.04&p=dns&f=1
+https://www.digitalocean.com/community/tutorial_series/an-introduction-to-managing-dns
+http://kti.eti.pg.gda.pl/ktilab/DNS/DNS.pdf
